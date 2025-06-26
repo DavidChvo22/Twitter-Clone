@@ -2,7 +2,6 @@ export default function InputField({ tweet, setTweet }){
     
 
     function handleInputBox(event){
-       // setInputPlaceholder(false);
         setTweet(event.target.value)
     }
 

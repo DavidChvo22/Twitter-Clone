@@ -11,6 +11,7 @@ export default function Home() {
   const [tweet, setTweet] = useState("");
   return (
     <>
+    <form>
       <InputField
         tweet={tweet}
         setTweet={setTweet}
@@ -19,7 +20,9 @@ export default function Home() {
         tweet={tweet}
         setTweet={setTweet}
       ></TweetShower>
-      <button onClick={handleLogOut}>Log Out</button>
+      
+    </form>
+    <button onClick={handleLogOut}>Log Out</button>
     </>
   );
 }

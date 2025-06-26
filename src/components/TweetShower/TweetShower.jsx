@@ -1,4 +1,5 @@
-import { useState,/* useEffect*/ } from "react";
+import { useState /* useEffect*/ } from "react";
+import "./TweetShower.css";
 
 export default function TweetShower({ tweet, setTweet }) {
   const [tweets, setTweets] = useState(() => {
@@ -6,20 +7,18 @@ export default function TweetShower({ tweet, setTweet }) {
     return savedTweets ? JSON.parse(savedTweets) : [];
   });
 
- //Pre ukladanie priebezne bez specialneho tlacidla
+  //Pre ukladanie priebezne bez specialneho tlacidla
   /*useEffect(() => {
     if (tweets.length > 0 ) {
       localStorage.setItem("tweets", JSON.stringify(tweets));
     }
   }, [tweets]);*/
 
-  function handleSaveTweets(){
-      localStorage.setItem("tweets", JSON.stringify(tweets));
-}
-  
   function handleAddTweet() {
     if (tweet.trim() !== "") {
-      setTweets([tweet, ...tweets]);
+      const newTweets = [tweet, ...tweets];
+      localStorage.setItem("tweets", JSON.stringify(newTweets));
+      setTweets(newTweets);
       setTweet("");
     }
   }
@@ -32,16 +31,23 @@ export default function TweetShower({ tweet, setTweet }) {
 
   return (
     <>
-      <button onClick={handleAddTweet}>Add Tweet</button>
-      <button onClick={handleSaveTweets}>Save Tweets</button>
+      <button type="button" onClick={handleAddTweet}>
+        Add Tweet
+      </button>
       <br />
       <ul>
-        {tweets.map((tweet, index) => (
-          <li key={index}>
-            {tweet}
-            <button onClick={() => handleDeleteTweet(index)}>Delete</button>
-          </li>
-        ))}
+        {tweets.length === 0 ? (
+          <li>No Tweets yet</li>
+        ) : (
+          tweets.map((tweet, index) => (
+            <li key={index}>
+              {tweet}
+              <button type="button" onClick={() => handleDeleteTweet(index)}>
+                Delete
+              </button>
+            </li>
+          ))
+        )}
       </ul>
     </>
   );
