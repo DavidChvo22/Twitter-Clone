@@ -1,3 +1,4 @@
+import "./InputField.css"
 export default function InputField({ tweet, setTweet, tweets, setTweets }) {
   function handleAddTweet() {
     if (tweet.trim() !== "") {
@@ -13,13 +14,15 @@ export default function InputField({ tweet, setTweet, tweets, setTweets }) {
   }
 
   return (
-    <form onSubmit={handleAddTweet}>
-      <input
+    <form id="inputField-form" onSubmit={handleAddTweet}>
+      <textarea
+        id="inputField-input"
         placeholder="Please enter your tweet"
         onChange={handleInputBox}
         value={tweet}
       />
-      <button>Add tweet</button>
+      <br/>
+      <button id="inputField-button">Add tweet</button>
     </form>
   );
 }

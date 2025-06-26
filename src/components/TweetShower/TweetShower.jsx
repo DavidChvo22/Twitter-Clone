@@ -11,14 +11,18 @@ export default function TweetShower({ tweets, setTweets}) {
   return (
     <>
       <br />
-      <ul>
+      <ul id="tweetShower-ul">
         {tweets.length === 0 ? (
           <li>No Tweets yet</li>
         ) : (
           tweets.map((tweet, index) => (
-            <li key={index}>
+            <li id="tweetShower-li" key={index}>
               {tweet}
-              <button type="button" onClick={() => handleDeleteTweet(index)}>
+              <button
+                id="tweetShower-button"
+                type="button"
+                onClick={() => handleDeleteTweet(index)}
+              >
                 Delete
               </button>
             </li>
