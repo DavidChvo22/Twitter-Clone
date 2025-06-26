@@ -9,20 +9,21 @@ export default function Home() {
     navigate("/");
   }
   const [tweet, setTweet] = useState("");
+  const [tweets, setTweets] = useState(() => {
+    const savedTweets = localStorage.getItem("tweets");
+    return savedTweets ? JSON.parse(savedTweets) : [];
+  });
+
   return (
     <>
-    <form>
-      <InputField
-        tweet={tweet}
-        setTweet={setTweet}
-      ></InputField>
-      <TweetShower
-        tweet={tweet}
-        setTweet={setTweet}
-      ></TweetShower>
-      
-    </form>
-    <button onClick={handleLogOut}>Log Out</button>
+        <InputField
+          tweet={tweet}
+          setTweet={setTweet}
+          tweets={tweets}
+          setTweets={setTweets}
+        ></InputField>
+        <TweetShower tweets={tweets} setTweets={setTweets}></TweetShower>
+      <button onClick={handleLogOut}>Log Out</button>
     </>
   );
 }

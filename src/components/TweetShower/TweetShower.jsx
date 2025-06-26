@@ -1,27 +1,6 @@
-import { useState /* useEffect*/ } from "react";
 import "./TweetShower.css";
 
-export default function TweetShower({ tweet, setTweet }) {
-  const [tweets, setTweets] = useState(() => {
-    const savedTweets = localStorage.getItem("tweets");
-    return savedTweets ? JSON.parse(savedTweets) : [];
-  });
-
-  //Pre ukladanie priebezne bez specialneho tlacidla
-  /*useEffect(() => {
-    if (tweets.length > 0 ) {
-      localStorage.setItem("tweets", JSON.stringify(tweets));
-    }
-  }, [tweets]);*/
-
-  function handleAddTweet() {
-    if (tweet.trim() !== "") {
-      const newTweets = [tweet, ...tweets];
-      localStorage.setItem("tweets", JSON.stringify(newTweets));
-      setTweets(newTweets);
-      setTweet("");
-    }
-  }
+export default function TweetShower({ tweets, setTweets}) {
 
   function handleDeleteTweet(indexToRemove) {
     const newTweets = tweets.filter((_, index) => index !== indexToRemove);
@@ -31,9 +10,6 @@ export default function TweetShower({ tweet, setTweet }) {
 
   return (
     <>
-      <button type="button" onClick={handleAddTweet}>
-        Add Tweet
-      </button>
       <br />
       <ul>
         {tweets.length === 0 ? (
