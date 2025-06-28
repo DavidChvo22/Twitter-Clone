@@ -14,8 +14,17 @@
 
 #inputField-button {
   position: absolute;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #0276FF;
+  color: white;
   right: 0;
   font-family: "Noto Sans", sans-serif;
   font-size: 16px;
   margin-right: 10px;
+}
+
+#inputField-button:hover{
+  background-color: white;
+  color: #0276FF;
 }

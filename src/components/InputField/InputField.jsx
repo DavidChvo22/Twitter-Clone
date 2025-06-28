@@ -1,4 +1,4 @@
-import "./InputField.css"
+import "./InputField.css";
 export default function InputField({ tweet, setTweet, tweets, setTweets }) {
   function handleAddTweet() {
     if (tweet.trim() !== "") {
@@ -21,7 +21,7 @@ export default function InputField({ tweet, setTweet, tweets, setTweets }) {
         onChange={handleInputBox}
         value={tweet}
       />
-      <br/>
+      <br />
       <button id="inputField-button">Add tweet</button>
     </form>
   );

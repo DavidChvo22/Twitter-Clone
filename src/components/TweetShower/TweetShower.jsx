@@ -1,7 +1,6 @@
 import "./TweetShower.css";
 
-export default function TweetShower({ tweets, setTweets}) {
-
+export default function TweetShower({ tweets, setTweets }) {
   function handleDeleteTweet(indexToRemove) {
     const newTweets = tweets.filter((_, index) => index !== indexToRemove);
     localStorage.setItem("tweets", JSON.stringify(newTweets));
