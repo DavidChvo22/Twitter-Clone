@@ -18,12 +18,12 @@ export default function Login() {
   }
   
   function handleLogin(event) {
-     event.preventDefault();
-    if (email.length >= 6 && password.length >= 6) {
-        navigate("/Home")
-    }else{
-        alert("Email and password must be atleast 6 characters");
+    event.preventDefault();
+    if (email.length < 6 || password.length < 6) {
+      alert("Email and password must be at least 6 characters");
+      return;
     }
+    navigate("/Home");
   }
   
   return (
